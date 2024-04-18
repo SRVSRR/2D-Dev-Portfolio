@@ -16,4 +16,16 @@ export function displaydialogue(text, onDisplayEnd){
 
         clearInterval(intervalRef);
     }, 5);
+
+    const closeBtn = document.getElementById("close");
+
+    function onClickBtnClick(){
+        onDisplayEnd();
+        dialogueUI.style.display = "none";
+        dialogue.innerHTML = "";
+        clearInterval(intervalRef);
+        closeBtn.removeEventListener("click", onClickBtnClick);
+    }
+
+    closeBtn.addEventListener("click", onClickBtnClick);
 }
